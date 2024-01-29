@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="icon" href="{% static 'service/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body bgcolor="" background="{% static 'service/12.jpeg' %}">
+<div class="menu">
+    <div class="wrap">
+        <div class="logo">
+            <a href="{% url 'index' %}"><img class="logo1" src="{% static 'service/logo1.png' %}" </a>
+        </div>
+        <ul>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="#">Оборудование</a></li>
+            <li><a href="{% static 'service/price.pdf' %}" target="_blank">Прейскурант цен</a></li>
+        </ul>
+        <div class="logo">
+
+        <ul>
+            <li>Пользователь: </li>
+            <li><a href="#">Актуальный</a></li>
+            <li>
+                <form action="#" method="post">
+                {% csrf_token %}
+                <button class="top">Выйти</button>
+            </form>
+            </li>
+        </ul>
+
+        <ul>
+            <li><a href="#">Зарегистрироваться</a></li>
+            <li><a href="#" class="">Войти</a></li>
+        </ul>
+
+        </div>
+
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+
+</body>
