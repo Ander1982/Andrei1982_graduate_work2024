@@ -2,6 +2,16 @@
 {% load static %}
 {% block content %}
 
-<h1>Работы</h1>
+<h2 class="count">Услуги: {{ blogs.count }}</h2>
+
+{% for work in works %}
+<div class="element">
+    <h2 class="top"><a href="{% url 'works' %}" class="">{{ work.title }}</a></h2>
+    <div class="blog_text">
+        <h5>{{ work.date|date:'d.m.Y' }}</h5>
+        <p>{{ work.description|truncatechars:200 }}</p>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock content%}

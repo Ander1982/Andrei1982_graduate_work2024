@@ -14,29 +14,30 @@
         </div>
         <ul>
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="#">Оборудование</a></li>
-            <li><a href="{% static 'service/price.pdf' %}" target="_blank">Прейскурант цен</a></li>
+            <li><a href="{% url 'works' %}">Оборудование</a></li>
+            <li><a href="{% static 'service/price.pdf' %}" target="_blank">Прейскурант</a></li>
+            <li><a href="{% url 'map' %}">Как к нам доехать</a></li>
         </ul>
         <div class="logo">
-
+             {% if user.is_authenticated %}
         <ul>
-            <li>Пользователь: </li>
-            <li><a href="#">Актуальный</a></li>
+            <li>Пользователь: {{ user.username }} </li>
+            <li><a href="{% url 'worker' %}">Актуальный</a></li>
             <li>
-                <form action="#" method="post">
+                <form action="{% url 'logoutuser' %}" method="post">
                 {% csrf_token %}
                 <button class="top">Выйти</button>
             </form>
             </li>
         </ul>
+            {% else %}
 
         <ul>
-            <li><a href="#">Зарегистрироваться</a></li>
-            <li><a href="#" class="">Войти</a></li>
+            <li><a href="{% url 'reguser' %}">Зарегистрироваться</a></li>
+            <li><a href="{% url 'loginuser' %}" class="">Войти</a></li>
         </ul>
-
+            {% endif %}
         </div>
-
     </div>
 </div>
 

@@ -86,7 +86,7 @@ h1{
 }
 .menu .wrap{
     display: flex;
-    flex-wrap: wrap;
+   /* flex-wrap: wrap; */
     justify-content: space-between;
     align-items: center;
 }
