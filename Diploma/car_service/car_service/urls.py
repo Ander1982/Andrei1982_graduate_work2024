@@ -30,6 +30,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('work/', views.worker, name='worker'),
     path('login/', views.loginuser, name='loginuser'),
+    path('telegram/', views.telegram, name='telegram'),
+    # path('thanks/', views.thanks_page, name='thanks'),
 ]
 
 

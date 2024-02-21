@@ -41,7 +41,7 @@
 }
 h1{
     text-align: center;
-    margin: 20px 0;
+    margin: 70px 0;
     font-family: 30px;
 
 }
@@ -137,4 +137,9 @@ h1{
   height: 40px;
   float: right;
   margin: 20px 10px 5px 20px;
+}
+.justify-content-center{
+
+    margin-left: 40%;
+
 }

@@ -1,6 +1,16 @@
 {% extends 'service/base.html' %}
 {% load static %}
 {% block content %}
+<div>
+    <a class="phone-number text-dark" href="tel:+79099999999">
+                <h5>Вы можете записаться по т.+7(909)-999-99-99</h5>
+    </a>
+    <div class="contact-top">
+                <a class="whatsapp-number" href="{% url 'telegram' %}"></a>
+                <a class="telegram-number" href="{% url 'telegram' %}"></a>
+
+    </div>
+</div>
 <h1>Шинный сервис</h1>
 <div class="img">
     <img class="main" src="{% static 'service/main.jpg' %}" alt="">
