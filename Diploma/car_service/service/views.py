@@ -1,22 +1,25 @@
 from django.shortcuts import render, redirect
-from .models import Service
+from .models import Service, Order, StatusOrder
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
-# from telebot.sendmessage import send_telegram
+from telebot.sendmessage import send_telegram
 from .forms import OrderForm
 
-# def thanks_page(request):
-#     if request.POST:
-#         name = request.POST['name']
-#         phone = request.POST['phone']
-#         element = Order(order_name=name, order_phone=phone)
-#         element.save()
-#         send_telegram(tg_name=name, tg_phone=phone)
-#         return render(request, "service/thanks.html", {"name": name})
-#     else:
-#         return render(request, "service/thanks.html")
+
+def thanks_page(request):
+    if request.POST:
+        name = request.POST['name']
+        phone = request.POST['phone']
+        sms = request.POST['sms']
+        element = Order(order_name=name, order_phone=phone, order_text=sms)
+        element.save()
+        send_telegram(tg_name=name, tg_phone=phone, tg_sms=sms)
+        return render(request, "service/thanks.html", {"name": name})
+    else:
+        return render(request, "service/thanks.html")
+
 
 def telegram(request):
     form = OrderForm()
@@ -55,7 +58,7 @@ def reguser(request):
                 return redirect('worker')
             except IntegrityError:
                 return render(request, 'service/reguser.html', {'form': UserCreationForm(),
-                                                               'error': 'Такое имя пользователя существует, создайте новое'})
+                                                                'error': 'Такое имя пользователя существует, создайте новое'})
         else:
             return render(request, 'service/reguser.html', {'form': UserCreationForm(), 'error': 'Пароли не совпадают'})
 

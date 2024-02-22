@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'service.apps.ServiceConfig',
     'works.apps.WorksConfig',
+    'telebot.apps.TelebotConfig',
 
 ]
 

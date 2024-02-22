@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service
+from .models import Service, Order, StatusOrder
 from django.utils.safestring import mark_safe
 
 
@@ -16,3 +16,5 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(StatusOrder)
+admin.site.register(Order)
