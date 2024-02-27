@@ -4,6 +4,7 @@
 
 <h1>Регистрация клиентов</h1>
 <h2>{{ error }}</h2>
+
 <form method="post" class="register">
     {% csrf_token %}
     {{ form.as_p }}

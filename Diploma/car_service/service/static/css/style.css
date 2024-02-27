@@ -115,6 +115,12 @@ h1{
 }
 .register{
     margin-left: 350px;
+    margin-right: 350px;
+    border-radius: 10px;
+    background: rgb(178, 178, 194);
+    padding: 10px;
+    border: 3px solid blue;
+    
 }
 .telegram-number {
   width: 35px;
