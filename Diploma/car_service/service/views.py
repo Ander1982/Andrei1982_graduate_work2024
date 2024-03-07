@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from telebot.sendmessage import send_telegram
-from .forms import OrderForm
+from .forms import OrderForm, RecordForm
 
 
 def thanks_page(request):
@@ -79,3 +79,9 @@ def loginuser(request):
 
 def map(request):
     return render(request, 'service/map.html')
+
+
+def record(request):
+    form = RecordForm()
+
+    return render(request, 'service/worker.html', {'form': form})

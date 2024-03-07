@@ -32,6 +32,7 @@ urlpatterns = [
     path('login/', views.loginuser, name='loginuser'),
     path('telebot/', views.telegram, name='telebot'),
     path('thanks/', views.thanks_page, name='thanks'),
+    path('record/', views.record, name='record'),
 ]
 
 
