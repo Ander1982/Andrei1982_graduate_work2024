@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div>
+    <form action="." METHOD="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Загрузить файл</button>
+    </form>
+</div>
+
+{% endblock %}

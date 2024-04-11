@@ -11,7 +11,7 @@
 
     </div>
 </div>
-<h1>Шинный сервис</h1>
+<h1 class="main1">Шинный сервис</h1>
 <div class="img">
     <a href="{% url 'works' %}"><img class="main" src="{% static 'service/main.jpg' %}" alt=""></a>
 </div>
@@ -22,7 +22,7 @@
     <div class="element">
         <div ><img class="jpeg" src="{{ project.image.url }}" alt=""></div>
         <div class="text">
-            <h2><a href="#" target='_blank'>{{ project.title }}</a></h2>
+            <h2><a href="{% url 'recording' %}" target='_blank'>{{ project.title }}</a></h2>
             <p>{{ project.description }}</p>
         </div>
     </div>

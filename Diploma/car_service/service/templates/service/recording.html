@@ -1,0 +1,152 @@
+{% extends 'service/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!--<section>-->
+<!--    <div class="container class_form">-->
+<!--        <h1 class="text-3">Оставь заявку и получи услугу</h1>-->
+<!--        <div class="row justify-content-center">-->
+<!--            <form action="#" method="POST">-->
+<!--                {% csrf_token %}-->
+<!--                <div class="form-group row">-->
+<!--                    <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label><br>-->
+<!--                    {{ form.name }}-->
+<!--                    <div class="">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group row">-->
+<!--                    <label for="inputEmail3" class="col-sm-2 col-form-label">Телефон</label><br>-->
+<!--                    {{ form.phone }}-->
+<!--                    <div class="">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group row">-->
+<!--                    <label for="inputEmail3" class="col-sm-2 col-form-label">Сообщение</label><br>-->
+<!--                    {{ form.sms }}-->
+<!--                    <div class="">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group row">-->
+<!--                    <button type="submit" class="btn btn-success">ОСТАВИТЬ ЗАЯВКУ</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+
+<!--<section>-->
+<!--    <div class="container class_form">-->
+<!--        <h1 class="text-3">Выбрать время предварительной записи</h1>-->
+
+<!--            <br>-->
+<!--            <form  class="form" action="{% url 'index' %}" method="POST">-->
+<!--                {% csrf_token %}-->
+<!--                <div class="form__field">-->
+<!--                    <br>-->
+<!--                    <label for="formInput#text">пользователь:</label>-->
+<!--                   {{ form.name }}-->
+<!--                    <br>-->
+
+<!--                </div>-->
+
+<!--                <div class="form__field">-->
+<!--                    <br>-->
+<!--                    <label for="formInput#text">сотрудник:</label>-->
+<!--                    <br>-->
+<!--                    {{ form.staff }}-->
+<!--                </div>-->
+<!--                 <div class="form__field">-->
+<!--                    <br>-->
+<!--                    <label for="formInput#text">вид работ:</label>-->
+<!--                    <br>-->
+<!--                    {{ form.works }}-->
+<!--                </div>-->
+<!--                 <div class="form__field">-->
+<!--                    <br>-->
+<!--                    <label for="formInput#text">вид услуг:</label>-->
+<!--                    <br>-->
+<!--                    {{ form.service }}-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <label for="">Выберите дату:</label>-->
+<!--                <input type="date" name="date" value={{min_day_value}} min={{min_day_value}} >-->
+
+<!--                <br>-->
+<!--                <br>-->
+
+<!--                <label for="start">Выберите доступное время:</label>-->
+<!--                <select name="time" id="">-->
+<!--                    {% for time in all_time %}-->
+<!--                    <option value="{{time}}">{{ time }}</option>-->
+<!--                    {% endfor %}-->
+<!--                </select>-->
+<!--                <br><br>-->
+
+
+<!--                <input class="btn btn&#45;&#45;sub btn&#45;&#45;lg  my-md" type="submit" value="Отправить заявку" />-->
+
+<!--            </form>-->
+<!--        </div>-->
+
+<!--</section>-->
+
+<section>
+    <div class="container class_form">
+        <h1>Выбрать время предварительной записи</h1>
+        <h3>{{ step }}</h3>
+        {% if step_1 %}
+            <form  class="form" action="{% url 'recording' %}" method="GET">
+
+<!--                    <label for="start">Выберите услугу:</label>-->
+<!--                    <select name="time" id="">-->
+<!--                        {% for service in services %}-->
+<!--                        <option value="{{service}}">{{ service }}</option>-->
+<!--                        {% endfor %}-->
+<!--                    </select>-->
+<!--                <br><br>-->
+
+
+                <label for="">Выберите дату:</label>
+                <input type="date" name="date" value={{min_day_value}} min={{min_day_value}} >
+
+                 <div style="float: right">
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Выбирите время"/>
+                </div>
+
+            </form>
+        {% endif %}
+        {% if step_2 %}
+
+             <form  class="form" action="{% url 'time-recording' %}" method="POST">
+                    {% csrf_token %}
+
+                 <label for="formInput#text">Укажите имя клиента:</label>
+
+                    <input type="text" value="" name="name">
+                 <br><br>
+
+                    <label for="start">Выберите доступное время:</label>
+                    <select name="time" id="">
+                        {% for time in all_time %}
+                        <option value="{{time}}">{{ time }}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <input type="hidden" name="date" value="{{ choised_day }}">
+                 <a href="{% url 'recording' %}" type="submit" class="button">Выбрать другую дату</a>
+
+                 {% if all_time %}
+                    <input class="button" type="submit" value="Отправить заявку"/>
+                 {% endif %}
+
+                </form>
+        {% endif %}
+        </div>
+
+</section>
+
+
+{% endblock content %}

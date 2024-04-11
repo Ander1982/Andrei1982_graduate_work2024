@@ -32,8 +32,11 @@ urlpatterns = [
     path('login/', views.loginuser, name='loginuser'),
     path('telebot/', views.telegram, name='telebot'),
     path('thanks/', views.thanks_page, name='thanks'),
-    path('record/', views.record, name='record'),
+    path('personal/<str:pk>', views.personal, name='personal'),
+    path('time-recording', views.time_recording, name='time-recording'),
+    path('recording', views.recording, name='recording'),
+
 ]
 
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

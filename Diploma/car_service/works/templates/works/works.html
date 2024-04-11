@@ -2,16 +2,26 @@
 {% load static %}
 {% block content %}
 
-<h2 class="count">Дополнительные виды работ:</h2>
-
-{% for work in works %}
-<div class="element">
-    <h2 class="top"><a href="{% url 'works' %}" class="">{{ work.title }}</a></h2>
-    <div class="blog_text">
-        <h5>{{ work.date|date:'d.m.Y' }}</h5>
-        <p>{{ work.description|truncatechars:200 }}</p>
-    </div>
+<br>
+<div class="img">
+    <a href="{% url 'works' %}"><img class="main" src="{% static 'service/main.jpg' %}" alt=""></a>
 </div>
-{% endfor %}
+
+<h2>{{ title }}</h2>
+<div class="block">
+     {% for category in categories %}
+    <div class="element">
+        <div class="text">
+            <h2><a href="{% url 'detail' category.id %}" target='_blank'>{{ category.name }}</a></h2>
+            <p>{{ category.description|truncatechars:200 }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
 
 {% endblock content%}

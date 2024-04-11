@@ -22,7 +22,7 @@
 }
 .jpeg{
     width: 360px;
-    height: 360px;
+    
 }
 .text{
     width: 360px;
@@ -39,12 +39,25 @@
     max-width: 360px;
 
 }
+.main1{
+    text-align: center;
+    margin: 50px 0 50px 360px;
+    font-family: 30px;
+}
 h1{
     text-align: center;
-    margin: 70px 0;
+    margin: 50px 0;
+    font-family: 30px;
+   
+}
+h3{
+    text-align: center;
+    margin: 50px 0;
     font-family: 30px;
 
 }
+
+
 .img + h2, .text h2{
     text-align: center;
     margin: 20px 0;
@@ -112,6 +125,12 @@ h1{
 }
 .avto{
     margin-left: 350px;
+    margin-right: 350px;
+    border-radius: 10px;
+    background: rgb(178, 178, 194);
+    padding: 10px;
+    border: 3px solid blue;
+    bottom: centre ;
 }
 .register{
     margin-left: 350px;
@@ -126,7 +145,7 @@ h1{
   width: 35px;
   height: 35px;
   float: right;
-  margin: 30px 30px 5px 20px;
+  margin: 40px 5px 20px 5px;
   background: url(../service/tg-image-color.png) no-repeat center top / cover;
   transition: 0.5s ease-in-out;
 }
@@ -134,7 +153,7 @@ h1{
   width: 35px;
   height: 35px;
   float: right;
-  margin: 30px 30px 5px 20px;
+  margin: 40px 5px 20px 5px;
   background: url(../service/wa-image-color.png) no-repeat center top / cover;
   transition: 0.5s ease-in-out;
 }
@@ -147,5 +166,31 @@ h1{
 .justify-content-center{
 
     margin-left: 40%;
+
+}
+.form {
+    margin-left: 500px;
+    margin-right: 500px;
+    border-radius: 10px;
+    background: rgb(178, 178, 194);
+    border: 3px solid blue;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.form__field {
+    margin-bottom: 10px;
+}
+.button {
+    border: 1px solid black;
+    text-decoration: none;
+    color: #000;
+    padding: 6px 10px;
+    background: white;
+    margin-left: 50px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.comment_date {
+    font-size: 10px;
 
 }

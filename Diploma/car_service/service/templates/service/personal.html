@@ -1,0 +1,53 @@
+{% extends 'service/base.html' %}
+{% load static %}
+{% load users_vote %}
+{% block content %}
+
+<h1>Сотрудник автосервиса </h1>
+<div class="block">
+    <div class="element">
+        <div><img class="jpeg" src="{{ personal.photo.url }}" alt=""></div>
+        <div class="text">
+            <h2><a href="{% url 'recording' %}" target='_blank'>{{ personal.name }}</a></h2>
+            <p>Направление деятельности:{{ personal.categories }}</p>
+            <p>Квалификация:{{ personal.skills }}</p>
+            <p>{{ personal.vote_total }} {{ personal.vote_total|ru_plural:'голос,голоса,голосов' }}</p>
+            <p>{{ personal.vote_ratio }}%</p>
+
+             <form  action="{% url 'personal' personal.id %}" method="POST">
+                 {% csrf_token %}
+                 {% for field in form %}
+                 <!-- Textarea -->
+                 <div class="form__field">
+                     <label for="formInput#textarea">{{ field.label }}: </label>
+                     {{ field }}
+                 </div>
+                 {% endfor %}
+                 <input class="btn btn--sub btn--lg" type="submit" value="Оставить комментарий"/>
+             </form>
+
+            <div class="commentList" style="height:100px; overflow:auto">
+                {% for review in personal.review_set.all %}
+                {% if review.body %}
+                <div class="comment">
+                    <div class="comment__details">
+                        <a href="{% url 'worker' %}" class="comment__author">{{ user.username }}</a>
+                        <p class="comment__info">
+                            {{ review.body|linebreaksbr }}
+
+                        </p>
+                        <p class="comment_date">комментарий оставлен-{{ review.created }}</p>
+                    </div>
+                </div>
+
+                {% endif %}
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    {% endblock %}

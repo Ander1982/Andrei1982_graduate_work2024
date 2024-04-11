@@ -1,6 +1,24 @@
 {% extends 'service/base.html' %}
 {% load static %}
 {% block content %}
-<h1>Содержание</h1>
+<br>
+<div class="img">
+    <a href="{% url 'works' %}"><img class="main" src="{% static 'service/main.jpg' %}" alt=""></a>
+</div>
 
-{% endblock content%}
+
+<div class="block">
+     {% for product in products %}
+    <div class="element">
+        <div ><img class="jpeg" src="{{ product.image.url }}" alt=""></div>
+        <div class="text">
+            <h2><a href="#" target='_blank'>{{ product.name }}</a></h2>
+            <p>{{ product.description|truncatechars:200 }}</p>
+            <p> {{ product.price }} руб.</p>
+            <p>в наличии {{ product.quantity}} шт.</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -10,7 +10,7 @@
 <div class="menu">
     <div class="wrap">
         <div class="logo">
-            <a href="{% url 'index' %}"><img class="logo1" src="{% static 'service/logo1.png' %}"></a>
+            <a href="{% url 'index' %}"><img class="logo1" src="{% static 'service/logo.png' %}"></a>
         </div>
         <ul>
             <li><a href="{% url 'index' %}">Главная</a></li>
@@ -22,7 +22,7 @@
              {% if user.is_authenticated %}
         <ul>
             <li>Пользователь: {{ user.username }} </li>
-            <li><a href="{% url 'worker' %}">Актуальный</a></li>
+            <li><a href="{% url 'worker' %}">Сотрудники</a></li>
             <li>
                 <form action="{% url 'logoutuser' %}" method="post">
                 {% csrf_token %}

@@ -1,18 +1,31 @@
 {% extends 'service/base.html' %}
-
+{% load static %}
+{% load users_vote %}
 {% block content %}
 
-<h1>Дополнительные услуги</h1>
+<div>
+    <a class="phone-number text-dark" href="{% url 'recording' %}" target='_blank'>
+                <h4>Вы можете записаться</h4>
+    </a>
+</div>
+<h1 class="main1">Сотрудники автосервиса</h1>
 
-<form action="" method="post">
-    {% csrf_token %}
-    <button>ghb</button>
-<!--    {{ form.data }}-->
-<!--    {% for i in form %}-->
-<!--    -->
-<!--    {% endfor %}-->
+<div class="block">
+    {% for men in staff %}
+    <div class="element">
+        <div ><img class="jpeg" src="{{ men.photo.url }}" alt=""></div>
+        <div class="text">
+            <h2><a href="{% url 'personal'  men.id %}" target='_blank'>{{ men.name }}</a></h2>
+            <p>Направление деятельности:{{ men.categories }}</p>
+            <p>Квалификация:{{ men.skills }}</p>
+            <p>{{ men.vote_total }} {{ men.vote_total|ru_plural:'голос,голоса,голосов' }}</p>
+            <p>положительных голосов: {{ men.vote_ratio }}%</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
-</form>
+
 
 {% endblock %}
 
